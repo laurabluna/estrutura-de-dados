@@ -1,7 +1,7 @@
 public class Fila2P implements interfaceFila2P {
     private int capacidade;
     private int topo;
-    private int final;
+    private int fim;
     private Object[] pilhaIns;
     private Object[] pilhaRem;
     
@@ -9,7 +9,7 @@ public class Fila2P implements interfaceFila2P {
     public Fila2P(int capacidade) {
         this.capacidade = capacidade;
         this.topo = topo;
-        this.final = final; 
+        this.fim = fim; 
     }
 
     @Override 
@@ -24,7 +24,7 @@ public class Fila2P implements interfaceFila2P {
 
     public void aumentaCap() {
         capacidade *= 2;
-        Object[]ListaN = new Object capacidade;
+        Object[]ListaN = new Object[] capacidade;
         PilhaRem = NovaListaS;
     }
     
@@ -34,9 +34,9 @@ public class Fila2P implements interfaceFila2P {
             throw new FilaVaziaExcecao("essa fila ta vazia hein!"); 
         }
         trocarPilhaS();
-        Object temp = pilhaRem[final]; 
-        pilhaRem[final] = null;
-        final--;
+        Object temp = pilhaRem[fim]; 
+        pilhaRem[fim] = null;
+        fim--;
         trocarPilhaE();
         return temp;
     }
@@ -49,8 +49,8 @@ public class Fila2P implements interfaceFila2P {
     @Override
     public void trocarPilhaS() {
         while(topo >= 0) {
-            final++; 
-            pilhaRem[final] = pilhaIns[topo]; 
+            fim++; 
+            pilhaRem[fim] = pilhaIns[topo]; 
             topo--;
         }
         topo++; 
@@ -59,10 +59,10 @@ public class Fila2P implements interfaceFila2P {
 
     @Override
     public void trocarPilhaE() {
-        while(final >= 0) {
-            pilhaIns[topo] = pilhaRem[final];
+        while(fim >= 0) {
+            pilhaIns[topo] = pilhaRem[fim];
             topo++;
-            final--;
+            fim--;
         }
         topo--; 
     }
@@ -87,7 +87,7 @@ public class Fila2P implements interfaceFila2P {
         if(isEmpty()) {
             throw new FilaVaziaExcecao("essa fila tá vazia hein!");
         }
-        return pilhaIns[final + 1];
+        return pilhaIns[fim + 1];
     }
 }
 
