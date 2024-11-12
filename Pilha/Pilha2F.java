@@ -21,7 +21,7 @@ public class Pilha2F implements interfacePilha2F {
     }
 
     @Override
-    public void pop() {
+    public Object pop() {
         if(isEmpty()) {
             throw new PilhaVaziaExcecao("essa pilha vazia ta vazia hein!");
         }
@@ -66,7 +66,7 @@ public class Pilha2F implements interfacePilha2F {
     public void aumentarCapacidade() {
         int novaCap;
         novaCap = capacidade * 2;
-        
+
     }
 
 
