@@ -1,4 +1,4 @@
-public class Fila2P {
+public class Fila2P implements interfaceFila2P {
     private int capacidade;
     private int topo;
     private int final;
