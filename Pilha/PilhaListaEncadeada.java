@@ -4,7 +4,7 @@ public class PilhaListaEncadeada {
 
     public PilhaListaEncadeada() {
         this.inicio = null;
-        this. tam = 0; 
+        this.tam = 0; 
     }
 
     public void push(Object elemento) {
