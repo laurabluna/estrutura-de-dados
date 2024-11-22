@@ -1,5 +1,5 @@
 public class vetorA {
-    private int tamamnho;
+    private int tamanho;
     private int capacidade;
     private Object[] array;
 
@@ -8,7 +8,15 @@ public class vetorA {
        this.array = new Object[this.capacidade]; 
     }
 
-    public Object replaceAtRank(int k, object o) {
+    public boolean isEmpty(){
+        return tamanho == 0;
+    }
+
+    public int tamanho() {
+        return tamanho;
+    }
+
+    public Object replaceAtRank(int k, Object o) {
         if(k > tamanho) {
             throw new VetorExcecao ("não vai dar pra inserir esse elemento ");
         }
@@ -27,10 +35,10 @@ public class vetorA {
             throw new VetorExcecao ("não vai dar pra inserir esse elemento ");
         }
 
-        if(capacidade == tamamho) {
+        if(capacidade == tamanho) {
             capacidade *=2;
             Object[] arrayNovo = new Object[capacidade];
-            for(int i = 0; i < size; i++) {
+            for(int i = 0; i < tamanho; i++) {
                 arrayNovo[i] = array[i];
             }
             array[k] = o;
@@ -54,5 +62,12 @@ public class vetorA {
         }
         tamanho--;
         return a; 
+    }
+
+    public void print() {
+        for(int i = 0; i < tamanho; i++) {
+            System.out.println(this.array[i]);
+            System.out.println("");
+        }
     }
 }
