@@ -84,8 +84,8 @@ public class vetorL {
             velho.prev = novoNo;
         }
         tamanho++;
+    }
 
-       }
 
        public Object removeAtRank(int k) {
         No atual = head.prox;
@@ -98,11 +98,17 @@ public class vetorL {
         atual.prox.prev = atual.prev;
         tamanho--;
         return retirado;
+        }
 
-
-        
-
-    
+        public void print() {
+        No atual = head.prox;
+        while (atual != tail) {
+            System.out.print(atual.elemento + " ");
+            atual = atual.prox;
+        }
+        System.out.println();
+        }
+  
 }
 
-}
+
