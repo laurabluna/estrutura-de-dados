@@ -138,4 +138,12 @@ public class ListaA {
     public boolean isLast(Object o) {
         return lista[tamanho - 1] == o;
     }
+
+    public void print(){
+        for (int i = 0; i < tamanho; i++) {
+            System.out.print(this.lista[i]);
+            System.out.print(' ');
+        }
+        System.out.println();
+    }
 }
