@@ -46,7 +46,7 @@ public class vetorA {
         }
     }
 
-    public Object removeAtRanl(int k) {
+    public Object removeAtRanK(int k) {
         if(isEmpty()) {
             throw new VetorExcecao("esse vetor ta vazio hein");
         }
