@@ -1,44 +1,66 @@
 public class vetorL {
     private No head, tail;
-    private int tamanho = 0; 
+    private int tamanho; 
+
+    public boolean isEmpty() {
+        return tamanho == 0;
+    }
+
+    public int tamanho() {
+        return tamanho;
+    }
+
+    private static class No {
+        Object elemento;
+        No prox, prev;
+
+        public No(Object elemento) {
+            this.elemento = elemento;
+            this.prox = null;
+            this.prev = null;
+        }
+    }
 
     public vetorL(){
         this.tamanho = 0; 
         this.head = new No(null);
         this.tail = new No(null);
+        head.prox = tail;
+        tail.prev = head;
     }
 
-    public replaceAtRank(int k, Object o) {
-        if(k > tamanho) {
+    public Object replaceAtRank(int k, Object o) {
+        if(k < 0 || k > tamanho) {
             throw new VetorExcecao("");
         }
 
         No current = head.prox;
         for(int i = 0; i < k; i++) {
-            current = current.next;
+            current = current.prox;
         }
-        Object a = current.elemento;
+
+        Object antigo = current.elemento;
         current.elemento = o;
-        return a;
+        return antigo;
     }
 
     public Object elemAtRank(int k)  {
-        No current = head.next;
+        No current = head.prox;
         for(int i = 0; i < k; i++) {
             current = current.prox;
         }
         return current.elemento; 
     }
 
-    public void insertAtRank(int k, object o) {
+    public void insertAtRank(int k, Object o) {
         No novoNo = new No(o);
         No velho = head.prox;
         if(k > tamanho) {
             throw new VetorExcecao(""); 
         }
         
-        if(head.next == null) {
-            head.next = novoNo;
+        if(head.prox == null) {
+            head.prox = novoNo;
             tail.prev = novoNo;
             novoNo.prev = head;
             novoNo.prox = tail;
@@ -48,12 +70,12 @@ public class vetorL {
             novoNo.prox = velho;
             novoNo.prev = head;
             velho.prev = novoNo;
-            head.next = novoNo;
+            head.prox = novoNo;
 
         }
 
         else {
-            for(int i = o; i < k; i++) {
+            for(int i = 0; i < k; i++) {
                 velho = velho.prox;
             }
             novoNo.prev = velho.prev;
@@ -66,32 +88,19 @@ public class vetorL {
        }
 
        public Object removeAtRank(int k) {
-        No velho = head.prox;
-        Object e;
-
-        if(k > tamanho) {
-            throw new VetorExcecao("");
+        No atual = head.prox;
+        for (int i = 0; i < k; i++) {
+            atual = atual.prox;
         }
 
-        if(isEmpty()) {
-            throw new VetorExcecao(""); {
-        }
-
-        if(k == 0 ) {
-            e = velho.e;
-            velho.prox.prev = head;
-            head.prox = velho.next; 
-        }
-
-        else {
-            for(int i = 0; i < k; i++) {
-                velho = velho.prox;
-            }
-        }
+        Object retirado = atual.elemento;
+        atual.prev.prox = atual.prox;
+        atual.prox.prev = atual.prev;
         tamanho--;
-        return e; 
+        return retirado;
 
-    }
+
+        
 
     
 }
