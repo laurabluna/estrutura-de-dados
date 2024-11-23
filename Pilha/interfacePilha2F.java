@@ -1,10 +1,8 @@
-public interface Pilha2F {
-    public void push(); 
-    public Object pop();
-    public void trocarFilaF();
-    public void trocarFilaI();
-    public int size();
-    public boolean isEmpty();
-
-
+public interface interfacePilha2F {
+    void push(Object elemento);
+    Object pop();
+    int size();
+    boolean isEmpty();
+    void trocarFilaF();
+    void trocarFilaI();
 }
