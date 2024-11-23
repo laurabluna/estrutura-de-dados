@@ -8,8 +8,10 @@ public class Fila2P implements interfaceFila2P {
 
     public Fila2P(int capacidade) {
         this.capacidade = capacidade;
-        this.topo = topo;
-        this.fim = fim; 
+        this.topo = -1;
+        this.fim = -1; 
+        this.pilhaIns = new Object[capacidade];
+        this.pilhaRem = new Object[capacidade];
     }
 
     @Override 
@@ -19,18 +21,21 @@ public class Fila2P implements interfaceFila2P {
         }
         topo += 1;
         pilhaIns[topo] = elemento;
-        System.out.println(elemento);
     }
 
     public void aumentaCap() {
         capacidade *= 2;
-        Object[]ListaN = new Object[] capacidade;
-        PilhaRem = NovaListaS;
+        Object[]ListaN = new Object[capacidade] ;
+        for (int i = 0; i <= topo; i++) {
+            ListaN[i] = pilhaIns[i];
+        }
+        pilhaIns = ListaN;
+        pilhaRem = new Object[capacidade]; 
     }
     
     @Override 
     public Object dequeue() {
-        if(isEmpty())n{
+        if(isEmpty()){
             throw new FilaVaziaExcecao("essa fila ta vazia hein!"); 
         }
         trocarPilhaS();
@@ -53,18 +58,15 @@ public class Fila2P implements interfaceFila2P {
             pilhaRem[fim] = pilhaIns[topo]; 
             topo--;
         }
-        topo++; 
-        
     }
 
     @Override
     public void trocarPilhaE() {
         while(fim >= 0) {
-            pilhaIns[topo] = pilhaRem[fim];
+            pilhaIns[++topo] = pilhaRem[fim];
             topo++;
             fim--;
         }
-        topo--; 
     }
 
     @Override
@@ -87,7 +89,7 @@ public class Fila2P implements interfaceFila2P {
         if(isEmpty()) {
             throw new FilaVaziaExcecao("essa fila tá vazia hein!");
         }
-        return pilhaIns[fim + 1];
+        return pilhaIns[fim];
     }
 }
 
