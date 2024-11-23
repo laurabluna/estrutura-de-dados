@@ -13,26 +13,31 @@ public class Fila implements interfaceFila {
     }
 
     @Override
-    public void enqueue(Object array) {
+    public void enqueue(Object elemento) {
         if(size() == (capacidade - 1)) {
             int nova_capacidade;
             if(incremento == 0) {
-                capacidade_nova = capacidade * 2;
-            } else {
-                capacidade_nova = capacidade + incremento;
+                nova_capacidade = capacidade * 2;
+            } 
+            
+            else {
+                nova_capacidade = capacidade + incremento;
             }
-            Object[] arrayNovo = new Object[capacidade_nova];
+
+            Object[] arrayNovo = new Object[nova_capacidade];
             int verdadeiroInicio = inicio; 
             for(int i = 0; i < size(); i++) {
                 arrayNovo[i] = array[verdadeiroInicio]; 
                 verdadeiroInicio = (verdadeiroInicio + 1) % capacidade; 
             }
+
             fim = size();
             inicio = 0;
-            capacidade = verdadeiroInicio; 
+            capacidade = nova_capacidade; 
             array = arrayNovo; 
         }
-        array[fim] = array; 
+
+        array[fim] = elemento;
         fim = (fim + 1) % capacidade; 
     }
 
@@ -43,7 +48,6 @@ public class Fila implements interfaceFila {
         }
         Object removido = array[inicio]; 
         inicio = (inicio + 1) % capacidade;
-        return array; 
     }
 
     @Override
