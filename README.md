@@ -1,5 +1,5 @@
 # estrutura-de-dados
-repositório destinado a disciplina estrutura de dados 3 período IFRN
+repositório destinado a implementasções da disciplina estrutura de dados 3 período IFRN. Os códigos se estruturam com a classe principal, de exceção e de teste. 
 
 <h1>Conteúdos</h1>
 
