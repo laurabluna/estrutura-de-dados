@@ -42,12 +42,13 @@ public class Fila implements interfaceFila {
     }
 
     @Override
-    public void dequeue() {
+    public Object dequeue() {
         if(isEmpty()) {
             throw new FilaVaziaExcecao ("essa fila tá vazia hein!");
         }
         Object removido = array[inicio]; 
         inicio = (inicio + 1) % capacidade;
+        return removido; 
     }
 
     @Override
