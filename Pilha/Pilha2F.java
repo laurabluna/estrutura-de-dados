@@ -7,13 +7,14 @@ public class Pilha2F implements interfacePilha2F {
 
     public Pilha2F(int capacidade) {
         this.capacidade = capacidade;
-        this.inicio = inicio;
-        this.fim = fim; 
+        this.stackEntrada = new Object[capacidade];
+        this.stackSaida = new Object[capacidade];
+
     }
 
     @Override
-    public void push() {
-        if(size() == (capacidade -1)) {
+    public void push (Object elemento) {
+        if(size() == capacidade -1) {
             aumentarCapacidade();
         }
         stackEntrada[fim] = elemento; 
@@ -26,50 +27,69 @@ public class Pilha2F implements interfacePilha2F {
             throw new PilhaVaziaExcecao("essa pilha vazia ta vazia hein!");
         }
         trocarFilaF(); 
-        Object temp = stackSaida[fim + 1]; 
-        fim = (fim + 1) % capacidade; 
+        Object temp = stackSaida[--fim]; 
+        stackSaida[fim] = null;
         trocarFilaI();
-        return temp; 
+        return temp;
+    }
+
+    public Object top() {
+        if (isEmpty()) {
+            throw new PilhaVaziaExcecao("A pilha está vazia");
+        }
+        return stackEntrada[fim - 1];
     }
 
     @Override
     public void trocarFilaF() {
-        while(fim >= 0) {
-            stackSaida[fim] = stackEntrada[inicio];
-            inicio++;
-            fim--;
+        for (int i = 0; i < fim; i++) {
+            stackSaida[i] = stackEntrada[i];
+            stackEntrada[i] = null;
         }
-        inicio--;
-        fim++;
+        fim = 0; 
     }
 
     public void trocarFilaI() {
-        while(inicio >= 0) {
-            stackEntrada[inicio] = stackSaida[fim]; 
-            inicio--;
-            fim++; 
+        for (int i = 0; i < capacidade; i++) {
+            if (stackSaida[i] != null) {
+                stackEntrada[fim++] = stackSaida[i];
+                stackSaida[i] = null;
+            }
         }
-        inicio++;
-        fim--; 
     }
 
     @Override
     public int size() {
-        return(capacidade - inicio + fim) % capacidade;
+        return fim;
     }
 
     @Override
     public boolean isEmpty() {
-        return inicio == fim; 
+        return size() == 0;
     }
 
     public void aumentarCapacidade() {
-        int novaCap;
-        novaCap = capacidade * 2;
+        int novaCap = capacidade * 2;
+        Object[] novaStackEntrada = new Object[novaCap];
+        Object[] novaStackSaida = new Object[novaCap];
+
+        System.arraycopy(stackEntrada, 0, novaStackEntrada, 0, capacidade);
+        System.arraycopy(stackSaida, 0, novaStackSaida, 0, capacidade);
+
+        stackEntrada = novaStackEntrada;
+        stackSaida = novaStackSaida;
+        capacidade = novaCap;
 
     }
-
-
+    public void listar() {
+        if (isEmpty()) {
+            throw new PilhaVaziaExcecao("A pilha está vazia");
+        }
+        for (int i = inicio; i != fim; i = (i + 1) % capacidade) {
+            System.out.print(stackEntrada[i] + " ");
+        }
+        System.out.println();
+    }
 
 
 }
