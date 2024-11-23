@@ -1,12 +1,9 @@
-public interface Fila2P {
-    public void enqueue();
-    public void aumentaCap(); 
-    public Object dequeue(); 
-    public boolean isEmpty(); 
-    public void trocarPilhaS();
-    public void trocarPilhaE();
-    public int size(); 
-    public void imprimir();
-    public Object First(); 
-
+public interface interfaceFila2P {
+    void enqueue(Object elemento);   
+    Object dequeue();                
+    boolean isEmpty();               
+    void trocarPilhaS();            
+    void trocarPilhaE();            
+    int size();                      
+    Object First();                  
 }
