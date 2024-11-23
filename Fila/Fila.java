@@ -66,4 +66,14 @@ public class Fila implements interfaceFila {
         }
         return array[inicio]; 
     }
+
+    public void print() {
+        if (isEmpty()) {
+            throw new FilaVaziaExcecao("essa fila ta vazia hein");
+        }
+        for (int i = inicio; i != fim; i = (i + 1) % capacidade) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
 }
