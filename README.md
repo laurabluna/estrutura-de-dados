@@ -18,7 +18,7 @@ Filas
 
 Vetor
 <ul> 
-  <li> Vetor com array </li>]
+  <li> Vetor com array </li>
   <li> Vetor com lista ligada </li>
 </ul>
 
