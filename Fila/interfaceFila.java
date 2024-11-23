@@ -1,9 +1,7 @@
 public interface interfaceFila {
-    public void enqueue(); 
-    public Object dequeue();
-    public Object first(); 
-    public int size();
-    public boolean isEmpty(); 
-
-
+    void enqueue(Object elemento);
+    void dequeue();
+    int size();
+    boolean isEmpty();
+    Object first();
 }
