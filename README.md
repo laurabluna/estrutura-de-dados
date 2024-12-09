@@ -32,3 +32,10 @@ Sequência
 <ul> 
   <li> Sequência com lista duplamente ligada </li>
 </ul>
+
+Árvore 
+<ul> 
+  <li> Arvore genérica </li>
+  <li> Arvore binária </li>
+  <li> Arvore binária de pesquisa</li>
+  </ul>
